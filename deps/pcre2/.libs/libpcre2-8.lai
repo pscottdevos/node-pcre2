@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/hashi101/node_modules/pcre2/deps/pcre2/../../build_pcre2/lib'
+libdir='/home/pscottdv/repos/pscottdv/node-pcre2/deps/pcre2/../../build_pcre2/lib'

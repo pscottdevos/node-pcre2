@@ -1,6 +1,6 @@
 #! /bin/sh
 # Generated automatically by config.status (pcre2) 10.22
-# Libtool was configured on host s6.mydevil.net:
+# Libtool was configured on host office:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 
 # Provide generalized library-building support services.
@@ -76,28 +76,28 @@ PATH_SEPARATOR=":"
 
 # The host system.
 host_alias=
-host=x86_64-unknown-freebsd10.3
-host_os=freebsd10.3
+host=x86_64-unknown-linux-gnu
+host_os=linux-gnu
 
 # The build system.
 build_alias=
-build=x86_64-unknown-freebsd10.3
-build_os=freebsd10.3
+build=x86_64-unknown-linux-gnu
+build_os=linux-gnu
 
 # A sed program that does not truncate output.
-SED="/usr/bin/sed"
+SED="/bin/sed"
 
 # Sed that helps us avoid accidentally triggering echo(1) options like -n.
 Xsed="$SED -e 1s/^X//"
 
 # A grep program that handles long lines.
-GREP="/usr/bin/grep"
+GREP="/bin/grep"
 
 # An ERE matcher.
-EGREP="/usr/bin/grep -E"
+EGREP="/bin/grep -E"
 
 # A literal string matcher.
-FGREP="/usr/bin/grep -F"
+FGREP="/bin/grep -F"
 
 # A BSD- or MS-compatible name lister.
 NM="/usr/bin/nm -B"
@@ -106,7 +106,7 @@ NM="/usr/bin/nm -B"
 LN_S="ln -s"
 
 # What is the maximum length of a command?
-max_cmd_len=196608
+max_cmd_len=1572864
 
 # Object file suffix (normally "o").
 objext=o
@@ -151,7 +151,7 @@ AR="ar"
 AR_FLAGS="cru"
 
 # How to feed a file listing to the archiver.
-archiver_list_spec=""
+archiver_list_spec="@"
 
 # A symbol stripping program.
 STRIP="strip"
@@ -244,7 +244,7 @@ need_lib_prefix=no
 need_version=no
 
 # Library versioning type.
-version_type=freebsd-elf
+version_type=linux
 
 # Shared library runtime path variable.
 runpath_var=LD_RUN_PATH
@@ -275,7 +275,7 @@ postinstall_cmds=""
 postuninstall_cmds=""
 
 # Commands used to finish a libtool library installation in a directory.
-finish_cmds=""
+finish_cmds="PATH=\\\"\\\$PATH:/sbin\\\" ldconfig -n \$libdir"
 
 # As "finish_cmds", except a single script fragment to be evaled but
 # not shown.
@@ -285,10 +285,10 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/usr/local/lib/gcc48/gcc/x86_64-portbld-freebsd10.3/4.8.5 /usr/local/x86_64-portbld-freebsd10.3/lib /usr/local/lib/gcc48 /lib /usr/lib "
+sys_lib_search_path_spec="/usr/lib/gcc/x86_64-linux-gnu/7 /usr/lib/x86_64-linux-gnu /usr/lib /lib/x86_64-linux-gnu /lib "
 
 # Detected run-time system search path for libraries.
-sys_lib_dlsearch_path_spec="/lib /usr/lib"
+sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/local/lib/i386-linux-gnu /lib/i386-linux-gnu /usr/lib/i386-linux-gnu /usr/local/lib/i686-linux-gnu /lib/i686-linux-gnu /usr/lib/i686-linux-gnu /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /lib32 /usr/lib32 "
 
 # Explicit LT_SYS_LIBRARY_PATH set during ./configure time.
 configure_time_lt_sys_library_path=""
@@ -308,7 +308,7 @@ striplib="strip --strip-unneeded"
 
 
 # The linker used to build libraries.
-LD="/usr/local/bin/ld"
+LD="/usr/bin/ld -m elf_x86_64"
 
 # How to create reloadable object files.
 reload_flag=" -r"
@@ -361,7 +361,10 @@ old_archive_from_expsyms_cmds=""
 
 # Commands used to build a shared archive.
 archive_cmds="\$CC -shared \$pic_flag \$libobjs \$deplibs \$compiler_flags \$wl-soname \$wl\$soname -o \$lib"
-archive_expsym_cmds="\$CC -shared \$pic_flag \$libobjs \$deplibs \$compiler_flags \$wl-soname \$wl\$soname \$wl-retain-symbols-file \$wl\$export_symbols -o \$lib"
+archive_expsym_cmds="echo \\\"{ global:\\\" > \$output_objdir/\$libname.ver~
+            cat \$export_symbols | sed -e \\\"s/\\\\(.*\\\\)/\\\\1;/\\\" >> \$output_objdir/\$libname.ver~
+            echo \\\"local: *; };\\\" >> \$output_objdir/\$libname.ver~
+            \$CC -shared \$pic_flag \$libobjs \$deplibs \$compiler_flags \$wl-soname \$wl\$soname \$wl-version-script \$wl\$output_objdir/\$libname.ver -o \$lib"
 
 # Commands used to build a loadable module if different from building
 # a shared archive.

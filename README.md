@@ -10,12 +10,23 @@ Requirements
 
 * [node.js](http://nodejs.org/) -- v0.8.0 or newer
 * Windows, Linux, or OSX
+* Automake
+* node-gyp
 
 
 Install
 =======
 
-    npm install pcre2
+  sudo apt install automake
+  git clone git@github.com:pscottdevos/node-pcre2.git
+  cd node-pcre2
+  npm install -g node-gyp
+  node-gyp configure
+  node-gyp build
+
+  In your project directory (directory with package.json file):
+
+  npm install path/to/repo/node-pcre2
 
 	
 USAGE
